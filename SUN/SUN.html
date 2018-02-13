@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html class="" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script src="SUN_files/console_runner-ce3034e6bde3912cc25f83cccb7caa2b0f976196f2f2d5.js"></script><script src="SUN_files/css_live_reload_init-890dc39bb89183d4642d58b1ae5376a0193342f9.js"></script><meta charset="UTF-8"><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="https://production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico"><link rel="mask-icon" type="" href="https://production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111"><link rel="canonical" href="https://codepen.io/jlong/pen/vLrRYg?depth=everything&amp;order=popularity&amp;page=5&amp;q=Love&amp;show_forks=false">
+<link href="SUN_files/css.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet prefetch" href="SUN_files/normalize.css">
+<style class="cp-pen-styles">body {
+  background-color: #ecf0f1;
+  text-align: center;
+  padding: 50px;
+  color: #7f8c8d;
+}
+
+h1 {
+  font-family: Montserrat, sans-serif;
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+svg {
+  background: white;
+  -webkit-box-shadow: rgba(0,0,0,0.1) 5px 5px 0 0;
+          box-shadow: rgba(0,0,0,0.1) 5px 5px 0 0;
+}
+
+p {
+  margin-top: 25px;
+}</style></head><body>
+<h1>SaveTheFlower|Wh0s1oV1nyOu</h1>
+
+<svg width="500" height="500"><path fill="none" stroke="#bdc3c7" stroke-width="1" d="M 100,200 L100,100"></path><path fill="none" stroke="#bdc3c7" stroke-width="1" d="M 250,100 L250,200"></path><path fill="none" stroke="#e74c3c" stroke-width="6" d="M 100,200 C100,100 250,100 250,200"></path><circle fill="#34495e" stroke="#fff" stroke-width="1" r="5" cx="100" cy="200"></circle><circle fill="#34495e" stroke="#fff" stroke-width="1" r="5" cx="100" cy="100"></circle><circle fill="#34495e" stroke="#fff" stroke-width="1" r="5" cx="250" cy="100"></circle><circle fill="#34495e" stroke="#fff" stroke-width="1" r="5" cx="250" cy="200"></circle><path fill="none" stroke="#bdc3c7" stroke-width="1" d="M 100,200 L100,300"></path><path fill="none" stroke="#bdc3c7" stroke-width="1" d="M 250,300 L250,400"></path><path fill="none" stroke="#e74c3c" stroke-width="6" d="M 100,200 C100,300 250,300 250,400"></path><circle fill="#34495e" stroke="#fff" stroke-width="1" r="5" cx="100" cy="200"></circle><circle fill="#34495e" stroke="#fff" stroke-width="1" r="5" cx="100" cy="300"></circle><circle fill="#34495e" stroke="#fff" stroke-width="1" r="5" cx="250" cy="300"></circle><circle fill="#34495e" stroke="#fff" stroke-width="1" r="5" cx="250" cy="400"></circle><path fill="none" stroke="#bdc3c7" stroke-width="1" d="M 250,200 L250,100"></path><path fill="none" stroke="#bdc3c7" stroke-width="1" d="M 400,100 L400,200"></path><path fill="none" stroke="#e74c3c" stroke-width="6" d="M 250,200 C250,100 400,100 400,200"></path><circle fill="#34495e" stroke="#fff" stroke-width="1" r="5" cx="250" cy="200"></circle><circle fill="#34495e" stroke="#fff" stroke-width="1" r="5" cx="250" cy="100"></circle><circle fill="#34495e" stroke="#fff" stroke-width="1" r="5" cx="400" cy="100"></circle><circle fill="#34495e" stroke="#fff" stroke-width="1" r="5" cx="400" cy="200"></circle><path fill="none" stroke="#bdc3c7" stroke-width="1" d="M 400,200 L400,300"></path><path fill="none" stroke="#bdc3c7" stroke-width="1" d="M 250,300 L250,400"></path><path fill="none" stroke="#e74c3c" stroke-width="6" d="M 400,200 C400,300 250,300 250,400"></path><circle fill="#34495e" stroke="#fff" stroke-width="1" r="5" cx="400" cy="200"></circle><circle fill="#34495e" stroke="#fff" stroke-width="1" r="5" cx="400" cy="300"></circle><circle fill="#34495e" stroke="#fff" stroke-width="1" r="5" cx="250" cy="300"></circle><circle fill="#34495e" stroke="#fff" stroke-width="1" r="5" cx="250" cy="400"></circle></svg>
+
+<p>For my SUN/Sun 2018-2-14</p>
+<script src="SUN_files/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26.js"></script><script src="SUN_files/d3.js"></script>
+<script>var black = '#34495e';
+var white = '#fff';
+var blue = '#3498db';
+var red = '#e74c3c';
+var silver = '#bdc3c7';
+
+var svg = d3.select('svg')
+  .attr('width', 500)
+  .attr('height', 500)
+;
+
+function addHandle(x, y, update) {
+  var handle = svg.append('circle')
+    .attr('fill', black)
+    .attr('stroke', white)
+    .attr('stroke-width', 1)
+    .attr('r', 5)
+    .attr('cx', x)
+    .attr('cy', y)
+  ;
+  var drag = d3.behavior.drag()
+    .on('drag', function() {
+      handle
+        .attr('cx', d3.event.x)
+        .attr('cy', d3.event.y)
+      ;
+      update();
+    })
+  ;
+  handle.call(drag);
+  return handle;
+}
+
+function addGuide() {
+  return svg.append('path')
+    .attr('fill', 'none')
+    .attr('stroke', silver)
+    .attr('stroke-width', 1)
+  ;
+}
+
+function addBezierPath(x1, y1, x2, y2, x3, y3, x4, y4) {
+  var g1 = addGuide(); 
+  var g2 = addGuide(); 
+
+  var path = svg.append('path')
+    .attr('fill', 'none')
+    .attr('stroke', red)
+    .attr('stroke-width', 6)
+  ;
+
+  var h1 = addHandle(x1, y1, updatePath);
+  var h2 = addHandle(x2, y2, updatePath);
+  var h3 = addHandle(x3, y3, updatePath);
+  var h4 = addHandle(x4, y4, updatePath);
+  
+  function updatePath() {
+    path
+      .attr('d',
+         'M ' + h1.attr('cx') + ',' + h1.attr('cy') + ' ' +
+         'C' + h2.attr('cx') + ',' + h2.attr('cy') + ' ' +
+         h3.attr('cx') + ',' + h3.attr('cy') + ' ' +
+         h4.attr('cx') + ',' + h4.attr('cy')
+      )
+    ;
+    g1 
+      .attr('d',
+         'M ' + h1.attr('cx') + ',' + h1.attr('cy') + ' ' +
+         'L' + h2.attr('cx') + ',' + h2.attr('cy')
+      )
+    ;
+    g2 
+      .attr('d',
+         'M ' + h3.attr('cx') + ',' + h3.attr('cy') + ' ' +
+         'L' + h4.attr('cx') + ',' + h4.attr('cy')
+      )
+    ;
+  }
+
+  updatePath();
+}
+
+addBezierPath(100,200, 100,100, 250,100, 250,200);
+addBezierPath(100,200, 100,300, 250,300, 250,400);
+
+addBezierPath(250,200, 250,100, 400,100, 400,200);
+addBezierPath(400,200, 400,300, 250,300, 250,400);
+//# sourceURL=pen.js
+</script>
+</body></html>
